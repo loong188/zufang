@@ -1,0 +1,7 @@
+//名字后两位隐藏
+function nameCrypt(name) {
+    return name.substring(0, 1) + '**';
+}
+module.exports = {
+    nameCrypt: nameCrypt
+}

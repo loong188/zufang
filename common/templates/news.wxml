@@ -1,0 +1,13 @@
+<!-- 新闻列表 -->
+<template name="news">
+  <navigator class="recommend-list" open-type="navigate" url="/pages/newsdetail/newsdetail?id={{ id }}">
+    <view>
+      <image src="{{ pic }}" />
+    </view>
+    <view class="recommend-list-item">
+      <view class="recommend-list-item-title">{{ title }}</view>
+      <view class="recommend-list-item-desc">{{ desc }}</view>
+      <view class="recommend-list-item-date">{{ dt }}</view>
+    </view>
+  </navigator>
+</template>

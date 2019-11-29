@@ -1,0 +1,18 @@
+<wxs src="../../utils/tools.wxs" module="utils" />
+<scroll-view class="sview" scroll-y="{{true}}">
+<block wx:for="{{items}}" wx:key="items">
+  
+
+  <view class="items">
+    <view class="item">
+      <view>{{utils.nameCrypt(item.fangowner.name)}}</view>
+      <view>{{ item.dtime }}</view>
+      <view>{{item.cnt}}</view>
+    </view>
+    <view class="calltel" data-phone="{{ item.fangowner.phone}}" bind:tap="callphone">
+      <text class="iconfont icon-dianhua"></text>
+      联系看房
+    </view>
+  </view>
+  </block>
+</scroll-view>

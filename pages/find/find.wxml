@@ -1,0 +1,18 @@
+<!-- 搜索 -->
+<view class="searchBox">
+  <view class="searchBox-area">
+    <text>北京</text>
+    <text class="iconfont icon-xiangxia font10"></text>
+  </view>
+  <view class="searchBox-input">
+    <text class="iconfont icon-sousuo1"></text>
+    <navigator open-type="navigate" url="">你想住在哪？</navigator>
+  </view>
+</view>
+
+<!-- 推荐房源 -->
+<include src="/common/templates/fang.wxml" />
+<!-- 回到顶部 -->
+<view class="gototop">
+  <text class="iconfont font30 icon-fanhuidingbu"></text>
+</view>

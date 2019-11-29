@@ -1,0 +1,39 @@
+<view>
+  <view class="tip">
+    <text class="iconfont icon-approve"></text>
+    <text>身份认证将提高租房成功率！</text>
+  </view>
+  <form bindsubmit="dopost">
+    <view>
+      <label>真实姓名</label>
+      <input name="truename" value="{{ userinfo.truename}}" placeholder="真实姓名" />
+    </view>
+    <view>
+      <label>身份证号</label>
+      <input name="card" value="{{ userinfo.card}}" type="idcard" placeholder="身份证号" />
+    </view>
+    <view>
+      <label>手机号码</label>
+      <input name="phone" value="{{ userinfo.phone}}" type="idcard" placeholder="手机号码" />
+      <input name="card_img"  type="text" value="{{ card_img}}" maxlength="500" hidden="{{ true}}" />
+    </view>
+    <view class="tip-msg">
+      添加手持身份证照片
+      <text>(照片仅用于身份认证)</text>
+    </view>
+    <view class="uppic" bind:tap="upfile">
+      <text class="iconfont icon-jiahao"></text>
+    </view>
+    <view>
+    <block wx:for="{{imglist}}" wx:key="imglist">
+      <image src="{{ item }}" style="width:200rpx;height:200rpx">
+        
+      </image>
+    </block>
+    </view>
+    <view class="sendbtn">
+      提交信息
+      <button type="primary" form-type="submit">提交信息</button>
+    </view>
+  </form>
+</view>

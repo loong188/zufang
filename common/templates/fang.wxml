@@ -1,0 +1,52 @@
+<!-- 房源列表 -->
+<view class="recommend">
+  <view class="nav">
+    <view class="recommend-search">
+      <view class="searchBox-area" data-index="{{0}}" bind:tap="onShadeDiv">
+        <text>区域</text>
+        <text class="iconfont font10 {{ arrows[0] }}"></text>
+      </view>
+      <view class="searchBox-area" data-index="{{1}}" bind:tap="onShadeDiv">
+        <text>方式</text>
+        <text class="iconfont font10 {{ arrows[1] }}"></text>
+      </view>
+      <view class="searchBox-area" data-index="{{2}}" bind:tap="onShadeDiv">
+        <text>租金</text>
+        <text class="iconfont font10 {{ arrows[2] }}"></text>
+      </view>
+      <view class="searchBox-area" data-index="{{3}}" bind:tap="onShadeDiv">
+        <text>筛选</text>
+        <text class="iconfont font10 {{ arrows[3] }}"></text>
+      </view>
+    </view>
+    <!-- 选择器 -->
+    <view class="shadediv {{show[0]}}">你好世界1</view>
+    <view class="shadediv {{show[1]}}">你好世界2</view>
+    <view class="shadediv {{show[2]}}">你好世界3</view>
+    <view class="shadediv {{show[3]}}">你好世界4</view>
+  </view>
+  <scroll-view scroll-y="{{true}}" class="sview" bindscrolltolower="getmore">
+    <block wx:for="{{fangs}}" wx:key="fangs">
+      <view class="recommend">
+        <navigator class="recommend-list" open-type="navigate" url="/pages/fang/fang?id={{item.id}}">
+          <view>
+            <image src="{{ item.pic }}" />
+          </view>
+          <view class="recommend-list-item">
+            <view class="recommend-list-item-title">{{ item.name }}</view>
+            <view class="recommend-list-item-spec">{{item.area}}平米 | {{ item.room}}</view>
+            <view class="recommend-list-item-tag">
+              <text class="tag1">押一付三</text>
+              <text class="tag2">免押金</text>
+              <text class="tag3">精装</text>
+            </view>
+            <view class="recommend-list-item-price">
+              <text>{{ item.rent }}</text>
+              元/月
+            </view>
+          </view>
+        </navigator>
+      </view>
+    </block>
+  </scroll-view>
+</view>
