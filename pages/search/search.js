@@ -1,5 +1,5 @@
 import model from '../../models/Fang'
-// pages/find/find.js
+// pages/search/search.js
 Page({
 
     /**
@@ -11,6 +11,11 @@ Page({
         arrows: ['icon-xiangxia', 'icon-xiangxia', 'icon-xiangxia', 'icon-xiangxia'],
         fangs: [],
         page: 1,
+        attrlist: {},
+        pageurl: '/pages/search/search',
+        fang_area: '',
+        fang_rent_class: '',
+        fang_rent_range: '',
         kw: ''
     },
 
@@ -18,26 +23,36 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        this.getmore()
+        let fang_area = options.fang_area ? options.fang_area : '';
+        let fang_rent_class = options.fang_rent_class ? options.fang_rent_class : '';
+        let fang_rent_range = options.fang_rent_range ? options.fang_rent_range : '';
+        this.getmore();
+        // 房源列表
+        model.fangAttr().then(ret => {
+            // console.log(ret);
+            this.setData({
+                attrlist: ret.data,
+                fang_area,
+                fang_rent_class,
+                fang_rent_range
+            })
+        })
     },
+
+    // 加载更多
     getmore() {
+        // 房源列表
         model.getFangList(this.data.page).then(ret => {
             let page = this.data.page;
-            if (ret.data.length > 0) {
+            if (ret.data.length > 0) { // 如果有数据则++
                 this.setData({
                     fangs: [...this.data.fangs, ...ret.data],
                     page: ++page
                 })
-            } else {
-                wx.showToast({
-                    title: '已经没有更多数据了',
-                    icon: 'none',
-                    duration: 1500,
-                    mask: true,
-                });
             }
         })
     },
+
     // 遮罩
     onShadeDiv(evt) {
         let index = evt.currentTarget.dataset.index;

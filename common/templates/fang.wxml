@@ -20,11 +20,30 @@
       </view>
     </view>
     <!-- 选择器 -->
-    <view class="shadediv {{show[0]}}">你好世界1</view>
-    <view class="shadediv {{show[1]}}">你好世界2</view>
-    <view class="shadediv {{show[2]}}">你好世界3</view>
+    
+      
+    
+    <view class="shadediv {{show[0]}}">   
+      <block wx:for="{{attrlist.fang_atea.sub}}" wx:key="fang_area">
+        <navigator url="/apages/search/search?fang_area={{item.id}}&fang_rent_class={{fang_rent_class}}&fang_rent_range={{fang_rent_range}}" open-type="navigate">{{ item.name}}  
+        </navigator>
+     </block>
+    </view>
+     <view class="shadediv {{show[1]}}">   
+      <block wx:for="{{attrlist.fang_atea.sub}}" wx:key="fang_area">
+        <navigator url="/apages/search/search?fang_area={{ fang_area}}&fang_rent_class={{item.id}}&fang_rent_range={{fang_rent_range}}" open-type="navigate">{{ item.name}}  
+        </navigator>
+     </block>
+    </view>
+     <view class="shadediv {{show[2]}}">   
+      <block wx:for="{{attrlist.fang_atea.sub}}" wx:key="fang_area">
+        <navigator url="/apages/search/search?fang_area={{ fang_area}}&fang_rent_class={{fang_rent_class}}&fang_rent_range={{item.id}}" open-type="navigate">{{ item.name}}  
+        </navigator>
+     </block>
+    </view>
+    <view >
     <view class="shadediv {{show[3]}}">你好世界4</view>
-  </view>
+    </view>
   <scroll-view scroll-y="{{true}}" class="sview" bindscrolltolower="getmore">
     <block wx:for="{{fangs}}" wx:key="fangs">
       <view class="recommend">
@@ -49,4 +68,6 @@
       </view>
     </block>
   </scroll-view>
+</view>
+  
 </view>

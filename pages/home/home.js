@@ -1,6 +1,7 @@
 import cache from '../../utils/Cache'
 import config from '../../utils/config'
 import Http from '../../utils/Http'
+import model from '../../models/Fang'
 const http = new Http;
 
 Page({
@@ -9,7 +10,8 @@ Page({
         // 用户信息
         userInfo: {},
         // 授权是否显示 false显示  true不显示
-        isShow: false
+        isShow: false,
+        recommends: []
     },
 
     onLoad(options) {
@@ -19,6 +21,12 @@ Page({
                 isShow: true
             })
         }
+        model.getRecommend().then(ret => {
+            // console.log(ret)
+            this.setData({
+                recommends: ret
+            })
+        })
     },
     // 用户授权
     getuserInfo() {

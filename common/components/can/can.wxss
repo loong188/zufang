@@ -1,0 +1,10 @@
+.long-can {
+    border: 1px solid grey;
+    font-weight: 400;
+    padding: 10rpx;
+    border-radius: 5px;
+    color: white;
+    /* height: 40rpx; */
+    background: red;
+    margin-left: 400rpx;
+}

@@ -32,4 +32,14 @@ export default {
     fanglist: '/fang/fanglist',
     //房源详情
     detail: '/fang/detail',
+    //检查是否收藏
+    isfav: '/fang/isfav',
+    //添加收藏
+    fav: '/fang/fav',
+    //房源属性列表
+    fangAttr: '/fang/attr',
+    //房源搜索
+    search: '/fang/search',
+    //删除图片
+    deletepic: 'deletepic',
 }

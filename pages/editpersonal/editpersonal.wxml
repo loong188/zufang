@@ -15,7 +15,7 @@
     <view>
       <label>手机号码</label>
       <input name="phone" value="{{ userinfo.phone}}" type="idcard" placeholder="手机号码" />
-      <input name="card_img"  type="text" value="{{ card_img}}" maxlength="500" hidden="{{ true}}" />
+      <input name="card_img" type="text" value="{{ card_img}}" maxlength="500" hidden="{{ true}}" />
     </view>
     <view class="tip-msg">
       添加手持身份证照片
@@ -24,12 +24,15 @@
     <view class="uppic" bind:tap="upfile">
       <text class="iconfont icon-jiahao"></text>
     </view>
-    <view>
-    <block wx:for="{{imglist}}" wx:key="imglist">
-      <image src="{{ item }}" style="width:200rpx;height:200rpx">
-        
-      </image>
-    </block>
+    <view class="imglists">
+
+      <block wx:for="{{imglist}}" wx:key="imglist">
+        <view class="img">
+          <image src="{{ item }}" data-imgsrc="{{ item}}" class="images" />
+          <view class="images_top" data-imgsrc="{{ item}}" bindtap="removeImg">X</view>
+        </view>
+      </block>
+
     </view>
     <view class="sendbtn">
       提交信息

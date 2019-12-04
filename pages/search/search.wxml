@@ -9,8 +9,7 @@
     <input type="text" name="kw" confirm-type="search" bindconfirm="search" />
   </view>
 </view>
-
-<!-- 推荐房源 -->
+<!-- 房源列表 -->
 <include src="/common/templates/fang.wxml" />
 <!-- 回到顶部 -->
 <view class="gototop">

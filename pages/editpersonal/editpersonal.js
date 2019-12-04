@@ -21,7 +21,7 @@ Page({
      */
     onLoad(options) {
         model.getOpenidToInfo().then(ret => {
-            // console.log(ret.data);
+            console.log(ret.data);
             this.setData({
                 //用户信息
                 userinfo: ret.data,
@@ -62,14 +62,26 @@ Page({
                 return Promise.all(arr);
             }
         }).then(res => {
+            // console.log(res)
             let arr = [];
             res.forEach(item => {
                 item = JSON.parse(item)
                 arr.push(item.path)
             });
             this.setData({
-                card_img: arr.join('#')
-            })
+                    card_img: arr.join('#')
+                })
+                // console.log(card_img)
         })
+    },
+    removeImg(evt) {
+        let ids = evt.target.dataset.imgsrc;
+        console.log(ids)
+            // let = ids.dataset.imgsrc;
+            // console.log(a)
+            // model.deletepic(ids).then(ret => {
+            //     console.log(ret)
+            // })
+
     }
 })

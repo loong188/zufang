@@ -1,5 +1,6 @@
 import model from '../../models/Article'
 import cache from '../../utils/Cache'
+import model1 from '../../models/Fang'
 
 
 const WxParse = require('../../wxParse/wxParse.js');
@@ -11,7 +12,8 @@ Page({
      */
     data: {
         info: {},
-        id: 0
+        id: 0,
+        recommends: []
     },
 
     /**
@@ -20,6 +22,11 @@ Page({
     onLoad(options) {
         console.log(options);
         model.setCount();
+        model1.getRecommend().then(ret => {
+            this.setData({
+                recommends: ret
+            })
+        })
         model.getIdByInfo(options.id).then(ret => {
             // console.log(ret);
             this.setData({

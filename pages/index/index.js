@@ -13,7 +13,8 @@ Page({
         group: [],
         fangs: [],
         page: 1,
-        top: 0
+        top: 0,
+        kw: ''
     },
 
     /**
@@ -24,6 +25,7 @@ Page({
         let p1 = model.getRecommend();
         let p2 = model.getGroupList();
         Promise.all([p1, p2]).then(([ret1, ret2]) => {
+            // console.log(ret1);
             this.setData({
                 recommends: ret1,
                 groups: ret2.data
@@ -34,6 +36,7 @@ Page({
     },
     getmore() {
         model.getFangList(this.data.page).then(ret => {
+            console.log(ret)
             let page = this.data.page;
             if (ret.data.length > 0) {
                 this.setData({
@@ -84,6 +87,15 @@ Page({
     gotoTop() {
         this.setData({
             top: 0
+        })
+    },
+    search(evt) {
+        let kw = evt.detail.value;
+        model.search(kw).then(ret => {
+            this.setData({
+                fangs: ret.data,
+                kw
+            })
         })
     }
 })

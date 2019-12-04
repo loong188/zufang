@@ -38,6 +38,12 @@ class Renting extends Http {
             name: 'cardimg'
         })
     }
+    deletepic(id) {
+        return this.httpReq({
+            url: config.deletepic,
+            data: { id }
+        })
+    }
 
 }
 export default new Renting;

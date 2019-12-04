@@ -12,7 +12,7 @@ Page({
         //页码
         page: 1,
         //回到顶部
-        top: 0
+        top: 0,
     },
 
     /**
@@ -50,5 +50,5 @@ Page({
         this.setData({
             top: 0
         })
-    }
+    },
 })

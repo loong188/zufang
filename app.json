@@ -12,7 +12,8 @@
     "pages/fangmsg/fangmsg",
     "pages/myhome/myhome",
     "pages/personal/personal",
-    "pages/editpersonal/editpersonal"
+    "pages/editpersonal/editpersonal",
+    "pages/search/search"
   ],
   "permission": {
     "scope.userLocation": {

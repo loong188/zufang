@@ -6,7 +6,7 @@
   </view>
   <view class="searchBox-input">
     <text class="iconfont icon-sousuo1"></text>
-    <navigator open-type="navigate" url="">你想住在哪？</navigator>
+    <input type="text" name="kw" confirm-type="search" bindconfirm="search" />
   </view>
 </view>
 <!-- 幻灯片 -->

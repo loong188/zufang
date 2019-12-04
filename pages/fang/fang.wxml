@@ -1,39 +1,45 @@
+<!-- 引用wxparse相关引用模板 -->
+<import src="/wxParse/wxParse.wxml"/>
 <!-- 幻灯片 -->
 <swiper class="swiper-img" autoplay="true" circular="{{true}}" indicator-dots="{{true}}">
-  <block wx:for="{{ recommend }}" wx:key="recommend">
+  <block wx:for="{{ info.fang_pic }}" wx:key="pic">
     
   
   <swiper-item>
     <navigator url="/pages/fang/fang?id={{item.id}}" open-type="navigate">
       
     </navigator>
-    <image src="{{item.fang_pic}}" />
+    <image src="{{item}}" />
   </swiper-item>
   </block>
 </swiper>
 <!-- 标题 -->
 <view class="padding20">
-  <view class="tagtitle">右安门 清芷园 南北两居室 家电齐全</view>
+  <view class="tagtitle">
+    {{info.fang_name}}
+    <long-can value="看房" bind:mycan="mycan"/>
+  </view>
+
   <view class="taglist">
     <view>
       <text class="tag1">押一付三</text>
       <text class="tag2">免押金</text>
       <text class="tag3">精装</text>
     </view>
-    <view class="tagdate">2019-08-11</view>
+    <view class="tagdate">{{info.updated_at}}</view>
   </view>
 </view>
 <view class="padding20 options">
   <view class="options-item">
-    <view class="options-red">8500/月</view>
+    <view class="options-red">{{ info.fang_rent}}/月</view>
     <view>租金(付3押1)</view>
   </view>
   <view class="options-item">
-    <view class="options-red">2室1厅1卫</view>
+    <view class="options-red">{{info.fang_shi}}室{{ info.fang_ting}}厅{{ info.fang_wei}}卫</view>
     <view>房型</view>
   </view>
   <view class="options-item">
-    <view class="options-red">89平米</view>
+    <view class="options-red">{{info.fang_build_area}}平米</view>
     <view>面积</view>
   </view>
 </view>
@@ -41,15 +47,15 @@
 <view class="padding20 fang-opt">
   <view class="fang-opt-item">
     <text>装修：</text>
-    <text>精装修</text>
+    <text>{{ info.fang_desc}}</text>
   </view>
   <view class="fang-opt-item">
     <text>朝向：</text>
-    <text>南北</text>
+    <text>{{ info.fang_direction}}</text>
   </view>
   <view class="fang-opt-item">
     <text>楼层：</text>
-    <text>底层(共18层)</text>
+    <text>{{ info.fang_floor}}</text>
   </view>
   <view class="fang-opt-item">
     <text>类型：</text>
@@ -57,12 +63,12 @@
   </view>
   <view class="fang-opt-item">
     <text>年代：</text>
-    <text>2019年</text>
+    <text>{{ info.fang_year}}</text>
   </view>
 </view>
 <!-- 地图 -->
 <view class="map-box">
-  <map id="map" latitude="40.13012" longitude="116.65477" scale="14" markers="{{markers}}"></map>
+  <map id="map" latitude="{{info.latitude}}" longitude="{{info.longitude}}" scale="14" markers="{{markers}}"></map>
 </view>
 <!-- 房屋配套 -->
 <view class="fangwoptao-title">房屋配套</view>
@@ -117,20 +123,28 @@
         <image src="https://fang.1314000.cn/zfw/page-myIcon.png" />
       </view>
       <view class="fangyuan-label">
-        <view>王女士</view>
+        <view>{{info.fangowner.name}}</view>
         <view class="red">已认证房主</view>
       </view>
       <view class="callphone">打电话</view>
     </view>
-    <view class="fangyuan-body">
-      1.周边配套齐全，地铁四号线陶然亭站，交通便利，公交云集，距离北京南站、西站都很近距离。 2.小区规模大，配套全年，幼儿园，体育场，游泳馆，养老院，小学。 3.人车分流，环境优美。 4.精装两居室，居家生活方便，还有一个小书房，看房随时联系。
-    </view>
+     <view class="fangyuan-body">
+  <!-- 富文本显示，其中 body名称就和数据绑定中的名称要一致 -->
+  <template is="wxParse" data="{{wxParseData:body.nodes}}"/>
+</view>
+    
   </view>
 </view>
 <!-- 底部功能菜单 -->
 <view class="footer-menu">
-  <view>添加收藏</view>
-  <view>分享好友</view>
-  <view>在线咨询</view>
-  <view>电话预约</view>
+  <view bind:tap="addFav">{{favmsg}}</view>
+  <view>
+  <button open-type="share">分享好友</button>
+  <text>分享好友</text>
+  </view>
+ <view>
+  <button open-type="contact">在线咨询</button>
+  <text>在线咨询</text>
+  </view>
+  <view data-phone="{{ info.fangowner.phone}}" bind:tap="callphone">电话预约</view>
 </view>

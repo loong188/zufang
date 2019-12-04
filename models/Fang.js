@@ -7,7 +7,7 @@ class Fang extends Http {
         return this.httpReq({
             url: config.recommend
         }).then(ret => {
-            console.log(ret);
+            // console.log(ret);
             //返回Promise对象让链式结构不断
             return new Promise((resolve, reject) => {
                 let data = ret.data;
@@ -39,5 +39,18 @@ class Fang extends Http {
             data: { id }
         })
     }
+    fangAttr() {
+        return this.httpReq({
+            url: config.fangAttr
+
+        })
+    }
+    search(kw) {
+        return this.httpReq({
+            url: config.search,
+            data: { kw }
+        })
+    }
+
 }
 export default new Fang;

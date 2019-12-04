@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+    "usingComponents": {
+        "long-can": "/common/components/can/can"
+    },
+    "navigationBarTitleText": "小虎房房"
 }
