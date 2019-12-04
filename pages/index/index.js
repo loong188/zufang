@@ -36,7 +36,7 @@ Page({
     },
     getmore() {
         model.getFangList(this.data.page).then(ret => {
-            console.log(ret)
+            // console.log(ret)
             let page = this.data.page;
             if (ret.data.length > 0) {
                 this.setData({

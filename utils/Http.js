@@ -1,4 +1,5 @@
 import config from './config';
+import md5 from './md5';
 export default class Http {
     //发起一个http请求
     httpReq({ url, data = {}, method = "GET" }) {
@@ -6,13 +7,16 @@ export default class Http {
                 title: '正在加载...',
                 mask: true,
             });
+            let {sign,timstamp}=this.getsign();
             return new Promise((resolve, reject) => {
                 wx.request({
                     url: config.domain + url,
                     data,
                     header: {
                         'username': config.username,
-                        'password': config.password
+                        'password': config.password,
+                        sign,
+                        timstamp
                     },
                     method,
                     success: ret => resolve(ret.data),
@@ -34,5 +38,17 @@ export default class Http {
                 success: res => resolve(res.data)
             })
         })
+    }
+    getsign(){
+        let timstamp=new Date().getTime();
+        let username=config.username;
+        let password=config.password;
+        let token = config.token;
+        let sign =username+token+password+timstamp;
+        sign=md5(sign);
+        return {
+            timstamp,
+            sign
+        }
     }
 }
